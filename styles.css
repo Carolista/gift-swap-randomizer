@@ -58,6 +58,11 @@ div {
 
 table {
   text-align: left;
+  width: fit-content;
+}
+
+th, td {
+  padding-right: 16px;
 }
 
 .remove-btn {

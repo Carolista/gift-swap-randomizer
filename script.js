@@ -85,9 +85,9 @@ window.addEventListener('load', function () {
       names.push(nameInput.value);
       localStorage.setItem('names', JSON.stringify(names));
     }
-    headerRow.innerHTML = '<th>Names</th>';
+    headerRow.innerHTML = '<th>Name</th>';
     if (shouldShowAssignments()) {
-      headerRow.innerHTML += '<th>Assignments</th>';
+      headerRow.innerHTML += '<th>Assignment</th>';
     } else {
       assignButton.innerHTML = "Assign Recipients";
       againText.style.visibility = 'hidden';
