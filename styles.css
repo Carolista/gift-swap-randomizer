@@ -10,9 +10,8 @@ body {
 }
 
 h3 {
-  color: rgb(176, 32, 60);
-  font-family: 'Lobster', serif;
-  font-size: max(4vw, 20pt);
+  color: rgb(218, 85, 97);
+  font-size: max(3.5vw, 18pt);
   font-weight: 700;
   margin: 0;
 }
@@ -51,22 +50,30 @@ div {
 }
 
 #who {
-  color: rgb(218, 85, 97);
+  color: rgb(36, 33, 57);
   font-size: 1.5rem;
   font-weight: 200;
+  margin-top: 10px;
 }
 
 table {
   text-align: left;
 }
 
+.remove-btn {
+  color: rgba(218, 85, 97, 0.95);
+  font-size: 0.95rem;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
 input {
   font-family: 'Barlow', sans-serif;
   font-size: 1rem;
-  background-color: rgba(218, 85, 97, 0.2);
+  background-color: rgba(122, 190, 182, 0.2);
   height: 24px;
   padding: 4px 6px;
-  border: rgb(218, 85, 97) 2px solid;
+  border: rgb(122, 190, 182) 2px solid;
   outline: none;
   border-radius: 4px;
 }
@@ -74,7 +81,7 @@ input {
 input::placeholder {
   font-family: 'Barlow', sans-serif;
   font-size: 1rem;
-  color: rgb(218, 85, 97);
+  color: rgb(122, 190, 182);
   opacity: 0.7;
 }
 
@@ -93,7 +100,7 @@ button {
 }
 
 #add {
-  background-color: rgb(218, 85, 97);
+  background-color: rgb(122, 190, 182);
 }
 
 #assign {
@@ -108,7 +115,7 @@ button {
 }
 
 #clear {
-  background-color: rgb(176, 32, 60);
+  background-color: rgb(218, 85, 97);
 }
 
 #again {

@@ -1,5 +1,7 @@
 window.addEventListener('load', function () {
 
+  // localStorage.clear();
+
   const nameForm = document.querySelector('form');
   const headerRow = document.getElementById('header-row');
   const tableBody = document.getElementById('table-body');
@@ -26,6 +28,16 @@ window.addEventListener('load', function () {
     againText.style.visibility = 'hidden';
   }
 
+  document.addEventListener("click", function (event) {
+    if (event.target.className.includes("remove-btn")) {
+      names.splice(event.target.id, 1);
+      assignments = [];
+      localStorage.setItem("names", JSON.stringify(names));
+      localStorage.setItem("assignments", JSON.stringify(assignments));
+      updateNames();
+    }
+  });
+
   nameForm.addEventListener('submit', function (event) {
     event.preventDefault();
     if (names.includes(nameInput.value)) {
@@ -37,11 +49,15 @@ window.addEventListener('load', function () {
 
   assignButton.addEventListener('click', function (event) {
     event.preventDefault();
-    assignments = shuffle(names);
-    localStorage.setItem('assignments', JSON.stringify(assignments));
-    updateNames();
-    assignButton.innerHTML = "Reassign Recipients";
-    againText.style.visibility = 'visible';
+    if (names.length < 2) {
+      alert("You must have at least 2 names to generate assignments.")
+    } else {
+      assignments = shuffle(names);
+      localStorage.setItem('assignments', JSON.stringify(assignments));
+      updateNames();
+      assignButton.innerHTML = "Reassign Recipients";
+      againText.style.visibility = 'visible';
+    }
   });
 
   printButton.addEventListener('click', function (event) {
@@ -78,7 +94,11 @@ window.addEventListener('load', function () {
     }
     let body = '';
     for (let i = 0; i < names.length; i++) {
-      body += `<tr><td>${names[i]}</td>`;
+      body += `<tr>
+      <td>
+        ${names[i]} 
+        <i class="fa-solid fa-rectangle-xmark remove-btn" id="${i}"></i>
+      </td>`;
       if (shouldShowAssignments()) {
         body += `<td>${assignments[i]}</td>`;
       }
@@ -92,8 +112,6 @@ window.addEventListener('load', function () {
     return assignments.length && assignments.length === names.length;
   }
 });
-
-/* Helper functions */
 
 function getRandomIndex(length) {
   return Math.floor(Math.random() * length);
