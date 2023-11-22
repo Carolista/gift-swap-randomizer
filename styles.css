@@ -61,7 +61,8 @@ table {
   width: fit-content;
 }
 
-th, td {
+th,
+td {
   padding-right: 16px;
 }
 

@@ -1,5 +1,4 @@
 window.addEventListener('load', function () {
-
   // localStorage.clear();
 
   const nameForm = document.querySelector('form');
@@ -19,21 +18,21 @@ window.addEventListener('load', function () {
 
   if (names.length) {
     updateNames();
-  } 
+  }
   if (shouldShowAssignments()) {
-    assignButton.innerHTML = "Reassign Recipients";
+    assignButton.innerHTML = 'Reassign Recipients';
     againText.style.visibility = 'visible';
   } else {
-    assignButton.innerHTML = "Assign Recipients";
+    assignButton.innerHTML = 'Assign Recipients';
     againText.style.visibility = 'hidden';
   }
 
-  document.addEventListener("click", function (event) {
-    if (event.target.className.includes("remove-btn")) {
+  document.addEventListener('click', function (event) {
+    if (event.target.className.includes('remove-btn')) {
       names.splice(event.target.id, 1);
       assignments = [];
-      localStorage.setItem("names", JSON.stringify(names));
-      localStorage.setItem("assignments", JSON.stringify(assignments));
+      localStorage.setItem('names', JSON.stringify(names));
+      localStorage.setItem('assignments', JSON.stringify(assignments));
       updateNames();
     }
   });
@@ -41,7 +40,7 @@ window.addEventListener('load', function () {
   nameForm.addEventListener('submit', function (event) {
     event.preventDefault();
     if (names.includes(nameInput.value)) {
-      alert("Each name must be unique.");
+      alert('\nEach name must be unique.\n');
     } else {
       updateNames();
     }
@@ -50,12 +49,12 @@ window.addEventListener('load', function () {
   assignButton.addEventListener('click', function (event) {
     event.preventDefault();
     if (names.length < 2) {
-      alert("You must have at least 2 names to generate assignments.")
+      alert('\nYou must have at least 2 names to generate assignments.\n');
     } else {
       assignments = shuffle(names);
       localStorage.setItem('assignments', JSON.stringify(assignments));
       updateNames();
-      assignButton.innerHTML = "Reassign Recipients";
+      assignButton.innerHTML = 'Reassign Recipients';
       againText.style.visibility = 'visible';
     }
   });
@@ -68,14 +67,14 @@ window.addEventListener('load', function () {
   clearButton.addEventListener('click', function (event) {
     event.preventDefault();
     if (
-      confirm('This will completely empty the list of names. Are you sure?')
+      confirm('\nThis will completely empty the list of names. Are you sure?\n')
     ) {
       localStorage.clear();
       names = [];
       assignments = [];
       headerRow.innerHTML = '';
       tableBody.innerHTML = '';
-      assignButton.innerHTML = "Assign Recipients";
+      assignButton.innerHTML = 'Assign Recipients';
       againText.style.visibility = 'hidden';
     }
   });
@@ -89,7 +88,7 @@ window.addEventListener('load', function () {
     if (shouldShowAssignments()) {
       headerRow.innerHTML += '<th>Assignment</th>';
     } else {
-      assignButton.innerHTML = "Assign Recipients";
+      assignButton.innerHTML = 'Assign Recipients';
       againText.style.visibility = 'hidden';
     }
     let body = '';
