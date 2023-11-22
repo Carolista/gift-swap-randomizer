@@ -1,6 +1,7 @@
 body {
-  font-size: 12pt;
-  font-family: 'Arvo', sans-serif;
+  font-size: 14pt;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
   background-color: #641822;
   background-image: url('./images/bkg.png');
   background-size: 200%;
@@ -12,6 +13,7 @@ h3 {
   color: rgb(176, 32, 60);
   font-family: 'Lobster', serif;
   font-size: max(4vw, 20pt);
+  font-weight: 700;
   margin: 0;
 }
 
@@ -24,7 +26,7 @@ header {
 
 #header-box {
   background-color: white;
-  padding: 2vw;
+  padding: 2vw 2.5vw 2.5vw;
   font-size: 8vw;
   font-family: 'Lobster', serif;
   justify-content: center;
@@ -48,54 +50,64 @@ div {
   gap: 10px;
 }
 
+#who {
+  color: rgb(218, 85, 97);
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+
 table {
   text-align: left;
 }
 
-button {
-  color: rgb(36, 33, 57);
-  font-family: 'Arvo', sans-serif;
+input {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  background-color: rgba(218, 85, 97, 0.2);
   height: 24px;
+  padding: 4px 6px;
+  border: rgb(218, 85, 97) 2px solid;
+  outline: none;
+  border-radius: 4px;
+}
+
+input::placeholder {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  color: rgb(218, 85, 97);
+  opacity: 0.7;
+}
+
+button {
+  color: white;
+  font-size: 1rem;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  height: 36px;
   width: fit-content;
   outline: none;
   border: none;
   border-radius: 4px;
   text-transform: uppercase;
+  padding: 6px 10px;
 }
 
-input {
-  /* color: rgb(122, 190, 182); */
-  font-family: 'Arvo', sans-serif;
-  font-size: 0.75rem;
-  /* background-color: rgb(230, 249, 247); */
-  padding: 4px 6px;
-  /* border: rgb(122, 190, 182) 2px solid; */
-  border-radius: 4px;
+#add {
+  background-color: rgb(218, 85, 97);
 }
 
-::placeholder {
-  /* color:rgb(122, 190, 182); */
-  opacity: 0.4;
+#assign {
+  background-color: rgb(36, 33, 57);
+  font-size: 18px;
+  height: 44px;
+  padding: 10px 14px;
 }
 
 #print {
-  color: white;
   background-color: rgb(122, 190, 182);
 }
 
-#add,
-#assign {
-  color: white;
-  background-color: rgb(36, 33, 57);
-}
-
-#assign {
-  height: 36px;
-  padding: 10px;
-}
-
 #clear {
-  color: white;
   background-color: rgb(176, 32, 60);
 }
 

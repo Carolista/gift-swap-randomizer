@@ -1,9 +1,4 @@
 window.addEventListener('load', function () {
-  let storedNames = JSON.parse(localStorage.getItem('names'));
-  let storedAssignments = JSON.parse(localStorage.getItem('assignments'));
-
-  let names = storedNames || [];
-  let assignments = storedAssignments || [];
 
   const nameForm = document.querySelector('form');
   const headerRow = document.getElementById('header-row');
@@ -14,11 +9,30 @@ window.addEventListener('load', function () {
   const printButton = document.getElementById('print');
   const clearButton = document.getElementById('clear');
 
-  if (names.length) updateNames();
+  let storedNames = JSON.parse(localStorage.getItem('names'));
+  let storedAssignments = JSON.parse(localStorage.getItem('assignments'));
+
+  let names = storedNames || [];
+  let assignments = storedAssignments || [];
+
+  if (names.length) {
+    updateNames();
+  } 
+  if (shouldShowAssignments()) {
+    assignButton.innerHTML = "Reassign Recipients";
+    againText.style.visibility = 'visible';
+  } else {
+    assignButton.innerHTML = "Assign Recipients";
+    againText.style.visibility = 'hidden';
+  }
 
   nameForm.addEventListener('submit', function (event) {
     event.preventDefault();
-    updateNames();
+    if (names.includes(nameInput.value)) {
+      alert("Each name must be unique.");
+    } else {
+      updateNames();
+    }
   });
 
   assignButton.addEventListener('click', function (event) {
@@ -26,6 +40,7 @@ window.addEventListener('load', function () {
     assignments = shuffle(names);
     localStorage.setItem('assignments', JSON.stringify(assignments));
     updateNames();
+    assignButton.innerHTML = "Reassign Recipients";
     againText.style.visibility = 'visible';
   });
 
@@ -44,6 +59,7 @@ window.addEventListener('load', function () {
       assignments = [];
       headerRow.innerHTML = '';
       tableBody.innerHTML = '';
+      assignButton.innerHTML = "Assign Recipients";
       againText.style.visibility = 'hidden';
     }
   });
@@ -53,9 +69,12 @@ window.addEventListener('load', function () {
       names.push(nameInput.value);
       localStorage.setItem('names', JSON.stringify(names));
     }
-    headerRow.innerHTML = '<th>Name</th>';
+    headerRow.innerHTML = '<th>Names</th>';
     if (shouldShowAssignments()) {
-      headerRow.innerHTML += '<th>Assignment</th>';
+      headerRow.innerHTML += '<th>Assignments</th>';
+    } else {
+      assignButton.innerHTML = "Assign Recipients";
+      againText.style.visibility = 'hidden';
     }
     let body = '';
     for (let i = 0; i < names.length; i++) {
