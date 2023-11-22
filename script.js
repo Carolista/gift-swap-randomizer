@@ -1,6 +1,4 @@
 window.addEventListener('load', function () {
-  // localStorage.clear();
-
   const nameForm = document.querySelector('form');
   const headerRow = document.getElementById('header-row');
   const tableBody = document.getElementById('table-body');
@@ -19,13 +17,8 @@ window.addEventListener('load', function () {
   if (names.length) {
     updateNames();
   }
-  if (shouldShowAssignments()) {
-    assignButton.innerHTML = 'Reassign Recipients';
-    againText.style.visibility = 'visible';
-  } else {
-    assignButton.innerHTML = 'Assign Recipients';
-    againText.style.visibility = 'hidden';
-  }
+
+  shouldShowAssignments() ? setReassign() : resetAssign();
 
   document.addEventListener('click', function (event) {
     if (event.target.className.includes('remove-btn')) {
@@ -54,12 +47,11 @@ window.addEventListener('load', function () {
       assignments = shuffle(names);
       localStorage.setItem('assignments', JSON.stringify(assignments));
       updateNames();
-      assignButton.innerHTML = 'Reassign Recipients';
-      againText.style.visibility = 'visible';
+      setReassign();
     }
   });
 
-  printButton.addEventListener('click', function (event) {
+  printButton.addEventListener('click', function () {
     print();
     return false;
   });
@@ -74,8 +66,7 @@ window.addEventListener('load', function () {
       assignments = [];
       headerRow.innerHTML = '';
       tableBody.innerHTML = '';
-      assignButton.innerHTML = 'Assign Recipients';
-      againText.style.visibility = 'hidden';
+      resetAssign();
     }
   });
 
@@ -88,16 +79,16 @@ window.addEventListener('load', function () {
     if (shouldShowAssignments()) {
       headerRow.innerHTML += '<th>Assignment</th>';
     } else {
-      assignButton.innerHTML = 'Assign Recipients';
-      againText.style.visibility = 'hidden';
+      resetAssign();
     }
     let body = '';
     for (let i = 0; i < names.length; i++) {
-      body += `<tr>
-      <td>
-        ${names[i]} 
-        <i class="fa-solid fa-rectangle-xmark remove-btn" id="${i}"></i>
-      </td>`;
+      body += `
+      <tr>
+        <td>
+          ${names[i]} 
+          <i class="fa-solid fa-rectangle-xmark remove-btn" id="${i}"></i>
+        </td>`;
       if (shouldShowAssignments()) {
         body += `<td>${assignments[i]}</td>`;
       }
@@ -109,6 +100,16 @@ window.addEventListener('load', function () {
 
   function shouldShowAssignments() {
     return assignments.length && assignments.length === names.length;
+  }
+
+  function setReassign() {
+    assignButton.innerHTML = 'Reassign Recipients';
+    againText.style.visibility = 'visible';
+  }
+
+  function resetAssign() {
+    assignButton.innerHTML = 'Assign Recipients';
+    againText.style.visibility = 'hidden';
   }
 });
 
