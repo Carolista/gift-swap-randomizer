@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gift Swap Randomizer</title>
+    <link href="./styles.css" type="text/css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Lobster&display=swap"
+      rel="stylesheet" />
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <header>
+      <div id="header-box">Gift Swap Randomizer</div>
+    </header>
+    <main>
+      <h3>Names</h3>
+      <p>
+        Enter the names of everyone who should be included in your gift swap.
+      </p>
+      <div id="name-area" class="col">
+        <table>
+          <thead>
+            <tr id="header-row"></tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+      <div id="form-area" class="spaced-items space-above space-below">
+        <form>
+          <input id="new-name" type="text" placeholder="Add a name" />
+          <button id="add" type="submit">Add</button>
+        </form>
+      </div>
+
+      <div class="col space-below">
+        <button id="assign">Assign Gifts</button>
+        <small id="again">(Not quite right? Try it again!)</small>
+      </div>
+
+      <div class="right">
+        <button id="print">Print List</button>
+        <button id="clear">Clear & Start a New List</button>
+      </div>
+    </main>
+  </body>
+</html>
