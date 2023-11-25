@@ -31,21 +31,25 @@
         </table>
       </div>
       <div id="form-area" class="spaced-items space-above space-below">
+        <div id="add-text">
+          <span id="plus">
+            <i class="fa-solid fa-square-plus"></i>
+          </span> Add name
+        </div>
         <form>
-          <input id="new-name" type="text" placeholder="Add a name" />
-          <button id="add" type="submit">Add</button>
+          <input id="new-name" type="text" placeholder="Name" />
+          <button id="add-button" type="submit">Add</button>
         </form>
       </div>
 
-      <div class="col space-below">
-        <button id="assign">Assign Recipients</button>
-        <small id="again">(You can shuffle as many times as you want!)</small>
+      <div class="col">
+        <div id="button-group">
+          <button id="assign">Assign Recipients</button>
+          <button id="print">Print</button>
+          <button id="clear">Clear</button>
+        </div>
       </div>
 
-      <div class="right">
-        <button id="print">Print List</button>
-        <button id="clear">Clear & Start a New List</button>
-      </div>
     </main>
   </body>
 </html>

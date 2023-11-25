@@ -1,10 +1,10 @@
 window.addEventListener('load', function () {
+  const addText = document.getElementById("add-text");
   const nameForm = document.querySelector('form');
   const headerRow = document.getElementById('header-row');
   const tableBody = document.getElementById('table-body');
   const nameInput = document.getElementById('new-name');
   const assignButton = document.getElementById('assign');
-  const againText = document.getElementById('again');
   const printButton = document.getElementById('print');
   const clearButton = document.getElementById('clear');
 
@@ -30,6 +30,11 @@ window.addEventListener('load', function () {
     }
   });
 
+  addText.addEventListener('click', function (event){
+    addText.style.display = "none";
+    nameForm.style.display = "flex";
+  });
+
   nameForm.addEventListener('submit', function (event) {
     event.preventDefault();
     if (names.includes(nameInput.value)) {
@@ -37,6 +42,8 @@ window.addEventListener('load', function () {
     } else {
       updateNames();
     }
+    nameForm.style.display = "none";
+    addText.style.display = "block";
   });
 
   assignButton.addEventListener('click', function (event) {
@@ -75,7 +82,9 @@ window.addEventListener('load', function () {
       names.push(nameInput.value);
       localStorage.setItem('names', JSON.stringify(names));
     }
-    headerRow.innerHTML = '<th>Name</th>';
+    if (names.length) {
+      headerRow.innerHTML = '<th>Name</th>';
+    }
     if (shouldShowAssignments()) {
       headerRow.innerHTML += '<th>Assignment</th>';
     } else {
@@ -87,7 +96,7 @@ window.addEventListener('load', function () {
       <tr>
         <td>
           ${names[i]} 
-          <i class="fa-solid fa-rectangle-xmark remove-btn" id="${i}"></i>
+          <i class="fa-solid fa-square-xmark remove-btn" id="${i}"></i>
         </td>`;
       if (shouldShowAssignments()) {
         body += `<td>${assignments[i]}</td>`;
@@ -104,12 +113,10 @@ window.addEventListener('load', function () {
 
   function setReassign() {
     assignButton.innerHTML = 'Reassign Recipients';
-    againText.style.visibility = 'visible';
   }
 
   function resetAssign() {
     assignButton.innerHTML = 'Assign Recipients';
-    againText.style.visibility = 'hidden';
   }
 });
 
