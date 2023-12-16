@@ -1,26 +1,16 @@
-$pale-blue: rgb(219, 240, 238);
-$light-blue: rgb(122, 190, 182);
-$mid-blue: rgb(50, 139, 128);
-$dark-navy: rgb(40, 45, 69);
-$mid-red: rgb(218, 85, 97);
-$dark-red: rgb(99, 24, 34);
-$pale-grey: #eee;
-$mid-grey: #888;
-$dark-grey: #444;
-
 body {
   font-size: 14pt;
-  font-family: 'Barlow', sans-serif;
+  font-family: "Barlow", sans-serif;
   font-weight: 400;
-  background-color: $dark-red;
-  background-image: url('./images/bkg.png');
+  background-color: rgb(99, 24, 34);
+  background-image: url("../images/bkg.png");
   background-size: 200%;
-  color: $dark-navy;
+  color: rgb(40, 45, 69);
   box-sizing: border-box;
 }
 
 h3 {
-  color: $mid-red;
+  color: rgb(218, 85, 97);
   font-size: max(3.5vw, 18pt);
   font-weight: 700;
   text-transform: uppercase;
@@ -38,12 +28,13 @@ header {
   background-color: white;
   padding: 2vw 2.5vw 2.5vw;
   font-size: 8vw;
-  font-family: 'Lobster', serif;
+  font-family: "Lobster", serif;
   justify-content: center;
-  color: $dark-navy;
+  color: rgb(40, 45, 69);
+  width: -moz-fit-content;
   width: fit-content;
-  border: 4px $dark-navy solid;
-  border-radius: 3vw / 50%;
+  border: 4px rgb(40, 45, 69) solid;
+  border-radius: 3vw/50%;
 }
 
 main {
@@ -51,7 +42,7 @@ main {
   width: 80%;
   padding: 20px;
   margin: 30px auto;
-  border: 4px $dark-navy solid;
+  border: 4px rgb(40, 45, 69) solid;
   border-radius: 10px;
 }
 
@@ -62,7 +53,7 @@ div {
 }
 
 #who {
-  color: $dark-navy;
+  color: rgb(40, 45, 69);
   font-size: 1.5rem;
   font-weight: 200;
   margin-top: 10px;
@@ -70,56 +61,68 @@ div {
 
 table {
   text-align: left;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
 th,
 td {
-  padding-right: 16px;
+  padding-right: 24px;
+}
+
+.name {
+  font-size: 1.1em;
 }
 
 .remove-btn {
-  color: $mid-red;
+  color: rgb(218, 85, 97);
   margin-left: 4px;
   cursor: pointer;
 }
 
 input {
-  font-family: 'Barlow', sans-serif;
+  font-family: "Barlow", sans-serif;
   font-size: 1rem;
-  background-color: $pale-blue;
+  background-color: rgb(219, 240, 238);
   height: 28px;
   width: calc(75% - 10px);
   padding: 4px 6px;
-  border: $mid-blue 2px solid;
+  border: rgb(50, 139, 128) 2px solid;
   outline: none;
   border-radius: 4px;
 }
-
+input::-moz-placeholder {
+  color: rgb(50, 139, 128);
+  opacity: 0.7;
+}
 input::placeholder {
-  color: $mid-blue;
+  color: rgb(50, 139, 128);
   opacity: 0.7;
 }
 
 button {
   color: white;
   font-size: 22px;
-  font-family: 'Barlow', sans-serif;
+  font-family: "Barlow", sans-serif;
   font-weight: 700;
+  width: -moz-fit-content;
   width: fit-content;
   outline: none;
   border: none;
   border-radius: 4px;
   text-transform: uppercase;
   padding: 6px 10px;
-}
-
-#add-text {
   cursor: pointer;
 }
 
 #plus {
-  color:$light-blue;
+  color: rgb(122, 190, 182);
+  cursor: pointer;
+}
+
+#add-name {
+  color: rgb(50, 139, 128);
+  cursor: pointer;
 }
 
 form {
@@ -130,21 +133,21 @@ form {
 
 #add-button {
   width: 25%;
-  background-color: $mid-blue;
+  background-color: rgb(50, 139, 128);
 }
 
 #assign {
-  background-color: $dark-navy;
+  background-color: rgb(40, 45, 69);
   width: 50%;
   padding: 10px 14px;
 }
 
 #print {
-  background-color: $light-blue;
+  background-color: rgb(122, 190, 182);
 }
 
 #clear {
-  background-color: $mid-red;
+  background-color: rgb(218, 85, 97);
 }
 
 #print, #clear {
@@ -163,12 +166,10 @@ form {
   #clear {
     width: 100%;
   }
-
   #button-group {
     flex-direction: col;
   }
 }
-
 .space-above {
   margin-top: 10px;
 }
@@ -188,3 +189,9 @@ form {
 .right {
   justify-content: end;
 }
+
+.disabled {
+  opacity: 0.6;
+  filter: grayscale(50%);
+  cursor: not-allowed;
+}/*# sourceMappingURL=styles.css.map */
