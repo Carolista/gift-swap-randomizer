@@ -8,6 +8,8 @@ $pale-grey: #eee;
 $light-grey: #ccc;
 $mid-grey: #888;
 $dark-grey: #444;
+$translucent-white: rgba(255, 255, 255, 0.9);
+
 $fancy-font: 'Lobster', serif;
 $regular-font: 'Barlow', sans-serif;
 
@@ -38,9 +40,9 @@ header {
 }
 
 #header-box {
-  background-color: white;
+  background-color: $translucent-white;
   padding: 2vw 2.5vw 2.5vw;
-  font-size: 8vw;
+  font-size: 6vw;
   font-family: $fancy-font;
   justify-content: center;
   color: $dark-navy;
@@ -50,7 +52,7 @@ header {
 }
 
 main {
-  background-color: white;
+  background-color: $translucent-white;
   width: 80%;
   padding: 20px;
   margin: 30px auto;
@@ -66,7 +68,7 @@ div {
 
 #who {
   color: $dark-navy;
-  font-size: 1.5rem;
+  font-size: max(2.5vw, 14pt);
   font-weight: 200;
   margin-top: 10px;
 }
@@ -74,11 +76,14 @@ div {
 table {
   text-align: left;
   width: fit-content;
+  border-collapse: collapse;
 }
 
 th,
 td {
-  padding-right: 24px;
+  vertical-align: top;
+  padding: 4px 24px 4px 4px;
+  border: #ccc solid 1px;
 }
 
 .name {
@@ -109,7 +114,7 @@ input {
 
 button {
   color: white;
-  font-size: 22px;
+  font-size: max(2.5vw, 12pt);
   font-family: $regular-font;
   font-weight: 700;
   width: fit-content;
@@ -165,19 +170,6 @@ form {
   flex-wrap: wrap;
 }
 
-@media only screen and (max-width: 600px) {
-  form,
-  #assign,
-  #print,
-  #clear {
-    width: 100%;
-  }
-
-  #button-group {
-    flex-direction: col;
-  }
-}
-
 .space-above {
   margin-top: 10px;
 }
@@ -199,8 +191,34 @@ form {
 }
 
 .disabled {
-  // color: $light-grey;
   opacity: 0.6;
   filter: grayscale(50%);
   cursor: not-allowed;
+}
+
+@media only screen and (max-width: 600px) {
+
+  #header-box {
+    font-size: 8vw;
+  }
+
+  form,
+  #assign,
+  #print,
+  #clear {
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding-right: 18px;
+  }
+
+  .name {
+    font-size: 0.9em;
+  }
+
+  #button-group {
+    flex-direction: col;
+  }
 }
