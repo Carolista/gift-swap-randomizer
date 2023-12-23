@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-  const addToggle = document.getElementById("add-toggle");
+  const addToggle = document.getElementById('add-toggle');
   const nameForm = document.querySelector('form');
   const headerRow = document.getElementById('header-row');
   const tableBody = document.getElementById('table-body');
@@ -74,7 +74,7 @@ window.addEventListener('load', function () {
     event.preventDefault();
     if (names.length) {
       if (
-        confirm('\nThis will completely empty the list of names. Are you sure?\n')
+        confirm('\nThis will delete all names. Are you sure?\n')
       ) {
         localStorage.clear();
         names = [];
@@ -113,8 +113,8 @@ window.addEventListener('load', function () {
       body += `
       <tr>
         <td>
-          <span class="name">${names[i]}</span>
           <i class="fa-solid fa-square-xmark remove-btn" id="${i}"></i>
+          <span class="name">${names[i]}</span>
         </td>`;
       if (shouldShowAssignments()) {
         body += `<td><span class="name">${assignments[i]}</span></td>`;
